@@ -10,8 +10,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true')
 .catch(() => console.error("could not connect to mongodb"))
 
 
-
-
 // const movie = [
 //     {id: 1, genres:"action"},
 //     {id: 2, genres: "anime"},
@@ -84,19 +82,18 @@ app.delete("/:id", async (req,res) =>{
     const movieGenre = await Movie.findByIdAndRemove(req.params.id)
     if(!movieGenre) res.status(404).send("Movie with this ID cannot be found")
 
-    res.send(movieGenre)
-   
-
-    
+    res.send(movieGenre)   
 })
 
 const port = process.env.PORT||3000
 app.listen(port, console.log (`listening to port ${3000}`))
 
+
  function validateMovie (films){
     const schema = {
         genres: Joi.string().min(3).required()
     }
+    
     return Joi.validate(films,schema);
  }
 

@@ -44,11 +44,11 @@ async function listCourses() {
     .find()
     .select('name')
     .populate("author","name -_id")
-    // .populte("category", "name")
+    // .populate("category", "name")
   console.log(courses);
 }
 
-// createAuthor('Mos', 'My bio', 'My Website');
+//  createAuthor('Mos', 'My bio', 'My Website');
 
 // createCourse('Node Course', '64050ebdae563ca2d40c359e')
 
